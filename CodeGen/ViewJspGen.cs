@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using System.Text.RegularExpressions;
+
 using System.Text;
 
-namespace JavaEEMVCGenerator.codeGen
+namespace JavaEEMVCGenerator.CodeGen
 {
-    public class ViewJspGen
+    public class ViewJspGen:BaseGen
     {
         
         public static string generate()
         {
             List<TColumn> tcs = global.columnNames;
             StringBuilder sb = new StringBuilder();
-            
-            sb.AppendLine("<%@page import=\"myproject.*\"%>"); 
+
+            sb.AppendLine("<%@page import=\"" + global.packageName + ".*\"%>");  
             sb.AppendLine("<%@page import=\"java.util.*\"%>"); 
             sb.AppendLine("<html>"); 
             sb.AppendLine("<head>"); 

@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Text.RegularExpressions;
-using JavaEEMVCGenerator.codeGen;
+using JavaEEMVCGenerator.CodeGen;
 using System.IO;
 namespace JavaEEMVCGenerator
 {
@@ -20,9 +20,12 @@ namespace JavaEEMVCGenerator
         }
  
       
-        void saveFile(string filePath, string text)
+        
+        void saveFile(string folderPath, string fileName, string text)
         {
-            if (!System.IO.File.Exists(filePath))
+            string filePath = Path.Combine(folderPath, fileName);
+            richTextBox1.AppendText("Saving File " + filePath + Environment.NewLine);
+            if (!File.Exists(filePath))
             {
                 using (StreamWriter outfile = new StreamWriter(filePath, true))
                 {
@@ -31,85 +34,52 @@ namespace JavaEEMVCGenerator
             }
         }
 
+        string makeFolder(string folderPath, string folderName)
+        {
+            string newPath = Path.Combine(folderPath, folderName);
+            richTextBox1.AppendText("Creating Folder " + newPath + Environment.NewLine);
+            Directory.CreateDirectory(newPath);
+            return newPath;
+        }
+
         private void buttonBrowse_Click(object sender, EventArgs e)
         {
-            
             folderBrowserDialog1.ShowDialog();
             textBoxOutputDir.Text = folderBrowserDialog1.SelectedPath;
-
         }
+       
 
         private void buttonGenerate_Click(object sender, EventArgs e)
         {
             TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
             string classNameLow = global.tblName.Substring(0, global.tblName.Length - 1);
             string className = myTI.ToTitleCase(classNameLow);
-
-            
             global.packageName = textBoxPackage.Text;
             string outputPath = textBoxOutputDir.Text;
-            string newPath = System.IO.Path.Combine(outputPath, "crud");
-            richTextBox1.AppendText("Creating Folder " + newPath+Environment.NewLine);
-            System.IO.Directory.CreateDirectory(newPath);
-
             
-
-            newPath = System.IO.Path.Combine(newPath, "src");
-            richTextBox1.AppendText("Creating Folder " + newPath + Environment.NewLine);
-            System.IO.Directory.CreateDirectory(newPath);
-
-            newPath = System.IO.Path.Combine(newPath, global.packageName);
-            System.IO.Directory.CreateDirectory(newPath);
-
+            //Folder src
+            string newPath =  makeFolder(outputPath, "crud");
+            newPath = makeFolder(newPath, "src");
+            newPath = makeFolder(newPath, global.packageName);
             //create javafileher
-            string filePath = System.IO.Path.Combine(newPath,className+".java");
-            richTextBox1.AppendText("Saving File " + filePath + Environment.NewLine);
-            saveFile(filePath, ModelGen.generate());
-            
-            filePath = System.IO.Path.Combine(newPath, "DBConnection.java");
-            richTextBox1.AppendText("Saving File " + filePath + Environment.NewLine);
-            saveFile(filePath, DBConGen.generate());
+            saveFile(newPath, className + ".java", ModelGen.generate());
+            saveFile(newPath, "DBConnection.java", DBConGen.generate());
+            saveFile(newPath, className + "Controll.java", ControllerGen.generate());
+            saveFile(newPath, className + "DbUtill.java", DBUtillGen.generate());
 
-            filePath = System.IO.Path.Combine(newPath, className + "Controll.java");
-            richTextBox1.AppendText("Saving File " + filePath + Environment.NewLine);
-            saveFile(filePath, ControllerGen.generate());
-
-            filePath = System.IO.Path.Combine(newPath, className + "DbUtill.java");
-            richTextBox1.AppendText("Saving File " + filePath + Environment.NewLine);
-            saveFile(filePath, DBUtillGen.generate());
-
-
-
-
-            newPath = System.IO.Path.Combine(outputPath, "crud");
-            newPath = System.IO.Path.Combine(newPath, "WebContent");
-            richTextBox1.AppendText("Creating Folder " + newPath + Environment.NewLine);
-            System.IO.Directory.CreateDirectory(newPath);
+            //Folder WebContent
+            newPath = Path.Combine(outputPath, "crud");
+            newPath = makeFolder(newPath, "WebContent");
             //create jsp here
+            saveFile(newPath, className + "Add.jsp", AddJspGen.generate());
+            saveFile(newPath, className + "Update.jsp", UpdateJspGen.generate());
+            saveFile(newPath, className + "View.jsp", ViewJspGen.generate());
+            saveFile(newPath, "Index.jsp", IndexJspGen.generate());
 
-            filePath = System.IO.Path.Combine(newPath, className + "Add.jsp");
-            richTextBox1.AppendText("Saving File " + filePath + Environment.NewLine);
-            saveFile(filePath, AddJspGen.generate());
-            filePath = System.IO.Path.Combine(newPath, className + "Update.jsp");
-            richTextBox1.AppendText("Saving File " + filePath + Environment.NewLine);
-            saveFile(filePath, UpdateJspGen.generate());
-            filePath = System.IO.Path.Combine(newPath, className + "View.jsp");
-            richTextBox1.AppendText("Saving File " + filePath + Environment.NewLine);
-            saveFile(filePath, ViewJspGen.generate());
-
-
-
-
-            
-
-            newPath = System.IO.Path.Combine(newPath, "WEB-INF");
-            richTextBox1.AppendText("Creating Folder " + newPath + Environment.NewLine);
-            System.IO.Directory.CreateDirectory(newPath);
+            //Folder WEB-INF
+            newPath = makeFolder(newPath, "WEB-INF");
             //create web.xml here
-            filePath = System.IO.Path.Combine(newPath, "web.xml");
-            richTextBox1.AppendText("Saving File " + filePath + Environment.NewLine);
-            saveFile(filePath, WebXmlGen.generate());
-
+            saveFile(newPath, "web.xml", WebXmlGen.generate());
 
             richTextBox1.AppendText("Project Created!!"+Environment.NewLine);
         }

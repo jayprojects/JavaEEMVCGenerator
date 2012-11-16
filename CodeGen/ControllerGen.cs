@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
-namespace JavaEEMVCGenerator
+
+namespace JavaEEMVCGenerator.CodeGen
 {
-    public class ControllerGen
+    public class ControllerGen:BaseGen
     {
-        static string indent="";
+        
         public static string generate()
         {
             List<TColumn> tcs = global.columnNames;
             StringBuilder sb = new StringBuilder();
-            
-            
-            sb.AppendLine(indent + "package myproject;");
+
+
+            sb.AppendLine("package " + global.packageName + ";");
             sb.AppendLine(indent + "");
             sb.AppendLine(indent + "import java.io.IOException;");
             sb.AppendLine(indent + "import java.util.List;");
@@ -121,14 +121,6 @@ namespace JavaEEMVCGenerator
 
             return sb.ToString();
         }
-        static void indentInc()
-        {
-            indent = indent + "\t";
-        }
-        static void indentDec()
-        {
-            var rgx = new Regex("\t");
-            indent = rgx.Replace(indent, "", 1);
-        }
+        
     }
 }

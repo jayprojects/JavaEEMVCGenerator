@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace JavaEEMVCGenerator
+namespace JavaEEMVCGenerator.CodeGen
 {
-    public class DBConGen
+    public class DBConGen:BaseGen
     {
         public static string generate()
         {
             StringBuilder sb = new StringBuilder();
-            string indent = "\t";
             sb.AppendLine("package " + global.packageName + ";");
             sb.AppendLine("import java.sql.*;");
             sb.AppendLine("public class DBConnection {");

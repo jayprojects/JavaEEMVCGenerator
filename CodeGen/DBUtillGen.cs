@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using System.Text.RegularExpressions;
-namespace JavaEEMVCGenerator
+
+namespace JavaEEMVCGenerator.CodeGen
 {
-    public class DBUtillGen
-    {   static string indent="";
+    public class DBUtillGen:BaseGen
+    {   
         public static string generate()
         {
 
@@ -173,14 +173,6 @@ namespace JavaEEMVCGenerator
          
 
         }
-        static void indentInc()
-        {
-            indent = indent + "\t";
-        }
-        static void indentDec()
-        {
-            var rgx = new Regex("\t");
-            indent = rgx.Replace(indent, "", 1);
-        }
+       
     }
 }

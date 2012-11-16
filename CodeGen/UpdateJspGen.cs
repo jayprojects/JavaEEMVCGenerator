@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using System.Text.RegularExpressions;
+
 using System.Text;
 
-namespace JavaEEMVCGenerator.codeGen
+namespace JavaEEMVCGenerator.CodeGen
 {
-    public class UpdateJspGen
+    public class UpdateJspGen:BaseGen
     {
 
         public static string generate()
         {
             List<TColumn> tcs = global.columnNames;
             StringBuilder sb = new StringBuilder();
-           
 
-            sb.AppendLine("<%@page import=\"myproject.*\"%>"); 
+            
+            sb.AppendLine("<%@page import=\"" + global.packageName + ".*\"%>"); 
             sb.AppendLine("<%@page import=\"java.util.*\"%>"); 
             sb.AppendLine(""); 
             sb.AppendLine("<html>"); 
@@ -50,8 +50,8 @@ namespace JavaEEMVCGenerator.codeGen
             sb.AppendLine("      <td align=left valign=top>"); 
             sb.AppendLine("         "); 
             sb.AppendLine("      </td>"); 
-            sb.AppendLine("      <td align=left valign=top>"); 
-            sb.AppendLine("      <input type=submit name=\"update\" value=\" Save \">"); 
+            sb.AppendLine("      <td align=left valign=top>");
+            sb.AppendLine("      <input type=submit name=\"update\" value=\" Save \">&nbsp;"); 
             sb.AppendLine("      <input type=\"button\" value=\" Cancel \" onClick=\"window.location.href='"+global.className+".do'\">"); 
             sb.AppendLine("      </td>"); 
             sb.AppendLine("    </tr>"); 

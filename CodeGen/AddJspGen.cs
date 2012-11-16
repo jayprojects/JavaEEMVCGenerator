@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace JavaEEMVCGenerator.codeGen
+namespace JavaEEMVCGenerator.CodeGen
 {
     public class AddJspGen
     {
@@ -45,9 +45,9 @@ namespace JavaEEMVCGenerator.codeGen
             sb.AppendLine("      <td align=left valign=top>"); 
             sb.AppendLine("         "); 
             sb.AppendLine("      </td>"); 
-            sb.AppendLine("      <td align=left valign=top>"); 
-            sb.AppendLine("      <input type=submit name=\"ADD\" value=\"  Add  \">"); 
-            sb.AppendLine("      <input type=\"button\" value=\"Cancel\">"); 
+            sb.AppendLine("      <td align=left valign=top>");
+            sb.AppendLine("      <input type=submit name=\"ADD\" value=\"  Add  \">&nbsp;");
+            sb.AppendLine("      <input type=\"button\" value=\" Cancel \" onClick=\"window.location.href='" + global.className + ".do'\">"); 
             sb.AppendLine("      </td>"); 
             sb.AppendLine("    </tr>"); 
             sb.AppendLine("  </table>"); 

@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
-using System.Text.RegularExpressions;
-namespace JavaEEMVCGenerator
+namespace JavaEEMVCGenerator.CodeGen
 {
-    public class ModelGen
+    public class ModelGen:BaseGen
     {
-        static string indent="";
+        
         public static string generate()
         {
             List<TColumn> tcs = global.columnNames;
@@ -102,14 +100,6 @@ namespace JavaEEMVCGenerator
 
             return sb.ToString();
         }
-        static void indentInc()
-        {
-            indent = indent + "\t";
-        }
-        static void indentDec()
-        {
-            var rgx = new Regex("\t");
-            indent = rgx.Replace(indent, "", 1);
-        }
+       
     }
 }

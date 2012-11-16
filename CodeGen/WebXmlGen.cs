@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
+
 using System.Text;
 
-namespace JavaEEMVCGenerator.codeGen
+namespace JavaEEMVCGenerator.CodeGen
 {
-    public class WebXmlGen
+    public class WebXmlGen:BaseGen
     {
 
         public static string generate()
@@ -25,7 +25,7 @@ namespace JavaEEMVCGenerator.codeGen
             sb.AppendLine("    <description></description>"); 
             sb.AppendLine("    <display-name>"+global.className+"Controll</display-name>"); 
             sb.AppendLine("    <servlet-name>"+global.className+"Controll</servlet-name>"); 
-            sb.AppendLine("    <servlet-class>myproject."+global.className+"Controll</servlet-class>"); 
+            sb.AppendLine("    <servlet-class>"+global.packageName+"."+global.className+"Controll</servlet-class>"); 
             sb.AppendLine("  </servlet>"); 
             sb.AppendLine("  <servlet-mapping>"); 
             sb.AppendLine("    <servlet-name>"+global.className+"Controll</servlet-name>"); 

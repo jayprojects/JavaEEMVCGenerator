@@ -48,6 +48,7 @@
     <Compile Include="CodeGen\ControllerGen.cs" />
     <Compile Include="CodeGen\DBConGen.cs" />
     <Compile Include="CodeGen\DBUtillGen.cs" />
+    <Compile Include="CodeGen\IndexJspGen.cs" />
     <Compile Include="CodeGen\ModelGen.cs" />
     <Compile Include="CodeGen\UpdateJspGen.cs" />
     <Compile Include="CodeGen\ViewJspGen.cs" />
