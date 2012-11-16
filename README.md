@@ -1,7 +1,7 @@
 JavaEEMVCGenerator
 ======================
 
-This is a Visual Studio 2010 Project. C# language.
+This is a Visual Studio 2010 Project. Language C#
 
 I created this project to make a tool that can create Java EE baseddynamic web project for Create Read Update Delete functionality to a database table , mostly on eclipse project. 
 
