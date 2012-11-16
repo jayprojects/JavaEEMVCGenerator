@@ -36,7 +36,14 @@ namespace JavaEEMVCGenerator
             global.dbName = textBoxDatabase.Text;
             global.tblName = textBoxTable.Text;
             TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
-            global.classNameLow = global.tblName.Substring(0, global.tblName.Length - 1);
+            string tName = global.tblName;
+            string cName = "";
+            char last = tName[tName.Length - 1];
+            if (last.Equals('s') || last.Equals('S'))
+            {
+                cName = tName.Substring(0, tName.Length - 1);
+            }
+            global.classNameLow = tName.ToLower().Trim();
             global.className = myTI.ToTitleCase(global.classNameLow);
             global.connectionString = "Server=" + textBoxServer.Text + "; " +
                                 "Database=" + textBoxDatabase.Text + "; " +

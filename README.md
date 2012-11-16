@@ -1,11 +1,13 @@
 JavaEEMVCGenerator
 ======================
 
-This is a Visual Studio 2010 Project C# language.
-I created this project to make a tool that can create basic dynamic web project for Java EE, mostly on eclipse project. 
+This is a Visual Studio 2010 Project. C# language.
+
+I created this project to make a tool that can create Java EE baseddynamic web project for Create Read Update Delete functionality to a database table , mostly on eclipse project. 
+
 The tool takes database information of a table and creates necessary files that can be added to a new eclipse project (Dynamic Web Project).
-The website has complete CRUD functionality on the table supplied.
-It creates necessary Model View(s) and Controller as well as some helper classes.
+The website has complete CRUD functionality on the table supplied. It creates necessary Model View(s) and Controller as well as some helper classes.
+
 If the table name is "Students" and given Java package name is "edu" then it creates followings files
 
 Generated Files
@@ -36,16 +38,24 @@ How to add to a new Eclipse project:
 If you want to add generated coed to an existing project
 =============================================================
 	Copy and paste files to appropriate locations.
-	you may also copy some portion of the code
+	or you may only want to copy portion of the code
 	
 Limitations
 ============
-	works on SQL server database only	
-	for now it only works for int and varchar. for other datatype, they works! but treated as string.
-	no sql injection checker
-	if its a date filed, make sure the input is correctly formated on the Add or Update page (YYYY-MM-DD) it will be insert as string!
+works on SQL server database only	
+
+for now it only works for int and varchar. for other datatype, they works! but treated as string.
+
+no sql injection checker
+
+if its a date filed, make sure the input is correctly formated on the Add or Update page (YYYY-MM-DD) it will be insert as string!
 
 Comments 
 =========
 	This is not an application, rather just a tool, meant to be used by a developer. 
 	So please use you judgment before you use generated files of any part of the codes
+
+	
+LICENSE
+=======
+The project is released under MIT License. See details on LICENSE file.	
