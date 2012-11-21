@@ -1,4 +1,10 @@
-﻿using System;
+﻿/**
+ * @author Jay Das <jay11421@gmail.com>
+ * @copyright 2012 Jay Das
+ * @namespace JavaEEMVCGenerator
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -51,9 +57,9 @@ namespace JavaEEMVCGenerator
 
         private void buttonGenerate_Click(object sender, EventArgs e)
         {
-            TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
-            string classNameLow = global.tblName.Substring(0, global.tblName.Length - 1);
-            string className = myTI.ToTitleCase(classNameLow);
+            //TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
+            //string global.classNameLow = global.tblName.Substring(0, global.tblName.Length - 1);
+            //string global.className = myTI.ToTitleCase(global.classNameLow);
             global.packageName = textBoxPackage.Text;
             string outputPath = textBoxOutputDir.Text;
             
@@ -62,18 +68,18 @@ namespace JavaEEMVCGenerator
             newPath = makeFolder(newPath, "src");
             newPath = makeFolder(newPath, global.packageName);
             //create javafileher
-            saveFile(newPath, className + ".java", ModelGen.generate());
+            saveFile(newPath, global.className + ".java", ModelGen.generate());
             saveFile(newPath, "DBConnection.java", DBConGen.generate());
-            saveFile(newPath, className + "Controll.java", ControllerGen.generate());
-            saveFile(newPath, className + "DbUtill.java", DBUtillGen.generate());
+            saveFile(newPath, global.className + "Controll.java", ControllerGen.generate());
+            saveFile(newPath, global.className + "DbUtill.java", DBUtillGen.generate());
 
             //Folder WebContent
             newPath = Path.Combine(outputPath, "crud");
             newPath = makeFolder(newPath, "WebContent");
             //create jsp here
-            saveFile(newPath, className + "Add.jsp", AddJspGen.generate());
-            saveFile(newPath, className + "Update.jsp", UpdateJspGen.generate());
-            saveFile(newPath, className + "View.jsp", ViewJspGen.generate());
+            saveFile(newPath, global.className + "Add.jsp", AddJspGen.generate());
+            saveFile(newPath, global.className + "Update.jsp", UpdateJspGen.generate());
+            saveFile(newPath, global.className + "View.jsp", ViewJspGen.generate());
             saveFile(newPath, "Index.jsp", IndexJspGen.generate());
 
             //Folder WEB-INF

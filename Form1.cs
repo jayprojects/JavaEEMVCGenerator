@@ -1,4 +1,10 @@
-﻿using System;
+﻿/**
+ * @author Jay Das <jay11421@gmail.com>
+ * @copyright 2012 Jay Das
+ * @namespace JavaEEMVCGenerator
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -43,7 +49,7 @@ namespace JavaEEMVCGenerator
             {
                 cName = tName.Substring(0, tName.Length - 1);
             }
-            global.classNameLow = tName.ToLower().Trim();
+            global.classNameLow = cName.ToLower().Trim();
             global.className = myTI.ToTitleCase(global.classNameLow);
             global.connectionString = "Server=" + textBoxServer.Text + "; " +
                                 "Database=" + textBoxDatabase.Text + "; " +

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodeGen\AddJspGen.cs" />
+    <Compile Include="CodeGen\BaseGen.cs" />
     <Compile Include="CodeGen\ControllerGen.cs" />
     <Compile Include="CodeGen\DBConGen.cs" />
     <Compile Include="CodeGen\DBUtillGen.cs" />
