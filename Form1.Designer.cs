@@ -80,7 +80,6 @@
             this.textBoxPasswrod.PasswordChar = '*';
             this.textBoxPasswrod.Size = new System.Drawing.Size(100, 20);
             this.textBoxPasswrod.TabIndex = 3;
-            this.textBoxPasswrod.Text = "Admin123";
             // 
             // label1
             // 
@@ -142,7 +141,6 @@
             this.textBoxDatabase.Name = "textBoxDatabase";
             this.textBoxDatabase.Size = new System.Drawing.Size(100, 20);
             this.textBoxDatabase.TabIndex = 10;
-            this.textBoxDatabase.Text = "bctimesheet";
             // 
             // textBoxTable
             // 
@@ -150,7 +148,6 @@
             this.textBoxTable.Name = "textBoxTable";
             this.textBoxTable.Size = new System.Drawing.Size(100, 20);
             this.textBoxTable.TabIndex = 11;
-            this.textBoxTable.Text = "us_holidays";
             // 
             // buttonConnect
             // 

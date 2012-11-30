@@ -57,6 +57,10 @@ namespace JavaEEMVCGenerator
                                 "Password=" + textBoxPasswrod.Text + "; ";
 
             DataTable dt = DbUtill.executeQuery("select * from "+global.dbName+".dbo."+global.tblName);
+            if ((dt!=null) && (dt.Rows.Count > 0))
+            {
+                buttonCreate.Enabled = true;
+            }
             dataGridView1.DataSource = dt;
             dataGridView1.Refresh();
 
@@ -72,7 +76,7 @@ namespace JavaEEMVCGenerator
                 CreateComboBox(columnName.ColumnName, columnName.csType, x, y);
                 y = y + 25;
             }
-            buttonCreate.Enabled = true;
+            
         }
 
         private void check_click(object sender, EventArgs e)

@@ -89,5 +89,10 @@ namespace JavaEEMVCGenerator
 
             richTextBox1.AppendText("Project Created!!"+Environment.NewLine);
         }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

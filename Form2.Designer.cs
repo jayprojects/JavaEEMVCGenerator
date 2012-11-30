@@ -36,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxPackage = new System.Windows.Forms.TextBox();
             this.buttonGenerate = new System.Windows.Forms.Button();
+            this.buttonClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -100,11 +101,22 @@
             this.buttonGenerate.UseVisualStyleBackColor = true;
             this.buttonGenerate.Click += new System.EventHandler(this.buttonGenerate_Click);
             // 
+            // buttonClose
+            // 
+            this.buttonClose.Location = new System.Drawing.Point(373, 107);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(75, 23);
+            this.buttonClose.TabIndex = 8;
+            this.buttonClose.Text = "Close";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 263);
+            this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonGenerate);
             this.Controls.Add(this.textBoxPackage);
             this.Controls.Add(this.label2);
@@ -129,5 +141,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxPackage;
         private System.Windows.Forms.Button buttonGenerate;
+        private System.Windows.Forms.Button buttonClose;
     }
 }
