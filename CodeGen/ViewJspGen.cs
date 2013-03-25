@@ -21,7 +21,8 @@ namespace JavaEEMVCGenerator.CodeGen
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine("<%@page import=\"" + global.packageName + ".*\"%>");  
-            sb.AppendLine("<%@page import=\"java.util.*\"%>"); 
+            sb.AppendLine("<%@ taglib uri=\"http://java.sun.com/jsp/jstl/core\" prefix=\"c\" %> ");
+            sb.AppendLine("<%@ taglib uri=\"http://java.sun.com/jsp/jstl/xml\" prefix=\"x\" %>"); 
             sb.AppendLine("<html>"); 
             sb.AppendLine("<head>"); 
             sb.AppendLine("<title>View "+global.className+"</title>"); 
@@ -67,10 +68,35 @@ namespace JavaEEMVCGenerator.CodeGen
             foreach (TColumn tc in tcs)
             {
 
-                sb.AppendLine("				<th align=\"left\" valign=\"top\">" + tc.ColumnNameTitleCase + "</th>");
+                sb.AppendLine("				<th align=\"left\" valign=\"top\">" + tc.ColumnName + "</th>");
             }
+
             sb.AppendLine("				<th align=\"left\" valign=\"top\">&nbsp;</th>"); 
-            sb.AppendLine("			</tr>"); 
+            sb.AppendLine("			</tr>");
+ 
+
+            sb.AppendLine("			<c:choose>");
+			sb.AppendLine("      <c:when test='${empty requestScope.bcmajorList}'>");
+			sb.AppendLine("          <c:redirect url='Bcmajor.do' />");
+			sb.AppendLine("      </c:when>");
+			sb.AppendLine("      <c:otherwise>");
+            sb.AppendLine("          <c:forEach items='${requestScope.bcmajorList}' var='" + global.className + "' varStatus='loop'>");
+			sb.AppendLine("             <tr>");
+            foreach (TColumn tc in tcs)
+            {
+                sb.AppendLine("  	           <td align='left' valign='top'>${" + global.className + "." + tc.ColumnName + "}</td>");
+            }
+            sb.AppendLine("					    <td align=\"left\" valign=\"top\">");
+            sb.AppendLine("							<a href=\"" + global.className + ".do?current_page=" + global.className + "View.jsp&amp;current_action=Update&amp;record_id=${" + global.className + "." + tcs.ElementAt(0).ColumnName + "}\">Update </a>&nbsp;");
+            sb.AppendLine("							<a href=\"#\" onclick=\"" + global.classNameLow + "_delete('${" + global.className + "." + tcs.ElementAt(0).ColumnName + "}');\">Delete </a>");
+            sb.AppendLine("					    </td>");
+			sb.AppendLine("             </tr>");
+		    sb.AppendLine("     		 </c:forEach>");
+			sb.AppendLine("      </c:otherwise>");
+			sb.AppendLine("      </c:choose>");
+
+
+            /*
             sb.AppendLine("			<%"); 
             sb.AppendLine("				List<"+global.className+"> "+global.classNameLow+"List = (List<"+global.className+">) request.getAttribute(\""+global.classNameLow+"List\");"); 
             sb.AppendLine("				if ("+global.classNameLow+"List != null) {"); 
@@ -95,6 +121,9 @@ namespace JavaEEMVCGenerator.CodeGen
             sb.AppendLine("					response.sendRedirect(\""+global.className+".do\");"); 
             sb.AppendLine("				}"); 
             sb.AppendLine("			%>"); 
+             * 
+             */
+ 
             sb.AppendLine("			<tr>"); 
             sb.AppendLine("				<td align=\"left\" valign=\"top\" colspan=\"6\">"); 
             sb.AppendLine("				<a href=\""+global.className+"Add.jsp\">Add New "+global.className+"</a></td>"); 

@@ -72,6 +72,23 @@ namespace JavaEEMVCGenerator
             }
         }
 
+        public string ColumnNameSentenceCase
+        {
+            get
+            {
+                string firstchar = _COLUMN_NAME.Substring(0, 1);
+                string restchars = _COLUMN_NAME.Substring(1);
+                return firstchar.ToUpper() + restchars;
+                //TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
+                //return myTI.to(_COLUMN_NAME);
+
+            }
+            set
+            {
+                _COLUMN_NAME = value;
+            }
+        }
+
         public string ColumnType
         {
             get

@@ -37,7 +37,7 @@ namespace JavaEEMVCGenerator.CodeGen
             sb.Append(indent + "\"values(");
             foreach (TColumn tc in tcs)
             {
-                sb.Append("'\"+" +global.classNameLow+ ".get" + tc.ColumnNameTitleCase + "()+\"', ");
+                sb.Append("'\"+" +global.classNameLow+ ".get" + tc.ColumnNameSentenceCase + "()+\"', ");
             }
             sb.Remove(sb.Length - 2, 2);
             sb.AppendLine(");\";");
@@ -65,7 +65,7 @@ namespace JavaEEMVCGenerator.CodeGen
             sb.Append(indent + "\"SET ");
             foreach (TColumn tc in tcs)
             {
-                sb.Append(" " + tc.ColumnName + "='\"+" +global.classNameLow+ ".get" + tc.ColumnNameTitleCase + "()+\"', ");
+                sb.Append(" " + tc.ColumnName + "='\"+" + global.classNameLow + ".get" + tc.ColumnNameSentenceCase + "()+\"', ");
             }
             sb.Remove(sb.Length - 2, 2);
             sb.AppendLine(" \"+");
@@ -171,6 +171,19 @@ namespace JavaEEMVCGenerator.CodeGen
 		         return 0;
 	        }";
             sb.Append(temStr1);
+
+            temStr1 = @"
+            public static String formatStr(Object str)
+	        {
+		        if(str!=null)
+		        {
+			       return str.toString();
+		        }
+		         return """";
+	        }";
+            sb.Append(temStr1);
+
+
             indentDec();
             sb.AppendLine(indent + "}");
             sb.AppendLine("");

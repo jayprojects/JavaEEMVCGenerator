@@ -55,7 +55,7 @@ namespace JavaEEMVCGenerator.CodeGen
             indentInc();
             foreach (TColumn tc in tcs)
             {
-                sb.Append(indent + "set" + tc.ColumnNameTitleCase);
+                sb.Append(indent + "set" + tc.ColumnNameSentenceCase);
                 sb.Append("(" + tc.ColumnName + ")");
                 sb.AppendLine(";");
 
@@ -69,7 +69,7 @@ namespace JavaEEMVCGenerator.CodeGen
             foreach (TColumn tc in tcs)
             {
                 sb.Append(indent + "public void ");
-                sb.Append( "set" + tc.ColumnNameTitleCase);
+                sb.Append("set" + tc.ColumnNameSentenceCase);
                 sb.AppendLine( "(" + tc.csType + " " + tc.ColumnName + ")");
                 sb.AppendLine(indent+"{");
                 indentInc();
@@ -86,7 +86,7 @@ namespace JavaEEMVCGenerator.CodeGen
             foreach (TColumn tc in tcs)
             {
                 sb.Append(indent + "public " + tc.csType + " ");
-                sb.AppendLine( "get" + tc.ColumnNameTitleCase + "()");
+                sb.AppendLine("get" + tc.ColumnNameSentenceCase + "()");
                 
                 sb.AppendLine(indent+"{");
                 indentInc();

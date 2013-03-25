@@ -19,15 +19,15 @@ namespace JavaEEMVCGenerator
                 switch (tc.csType)
                 {
                     case "int":
-                        sb.AppendLine(indent + "" + global.classNameLow + ".set" + tc.ColumnNameTitleCase + "(" + global.className + "DbUtill.formatInt(row[" + i.ToString() + "].toString()));");
+                        sb.AppendLine(indent + "" + global.classNameLow + ".set" + tc.ColumnNameSentenceCase + "(" + global.className + "DbUtill.formatInt(formatStr(row[" + i.ToString() + "])));");
                         break;
 
                     case "String":
-                        sb.AppendLine(indent + "" + global.classNameLow + ".set" + tc.ColumnNameTitleCase + "(row[" + i.ToString() + "].toString());");
+                        sb.AppendLine(indent + "" + global.classNameLow + ".set" + tc.ColumnNameSentenceCase + "(formatStr(row[" + i.ToString() + "]));");
                         break;
 
                     default:
-                        sb.AppendLine(indent + "" + global.classNameLow + ".set" + tc.ColumnNameTitleCase + "(row[" + i.ToString() + "].toString());");
+                        sb.AppendLine(indent + "" + global.classNameLow + ".set" + tc.ColumnNameSentenceCase + "(formatStr(row[" + i.ToString() + "]));");
                         break;
                 }
 
