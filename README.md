@@ -53,7 +53,7 @@ if its a date filed, make sure the input is correctly formated on the Add or Upd
 Comments 
 =========
 	This is not an application, rather just a tool, meant to be used by a developer. 
-	So please use your judgment before you use generated files of any part of the codes
+	So please use your judgment before you use generated files or any part of the codes
 
 	
 LICENSE
